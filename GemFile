@@ -1,4 +1,10 @@
 group :test do
 	gem 'cucumber'
 	gem 'dotenv'
+	gem 'net/https'
+	gem 'rspec/expectations'
+	gem 'json'
+	gem 'capybara/cucumber'
+	gem 'erb'
+	gem 'pry'
 end
