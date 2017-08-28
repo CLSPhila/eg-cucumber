@@ -15,6 +15,7 @@ Feature: Use a browser to find expungeable arrests and generate an expungement p
 	Scenario: Log in as a valid user
 		When I visit the expungement generator site
 		And I click "Login by clicking here"
+		And I enter a valid user login
 		And I enter a valid user password
 		And I click login
-		Then I don't know what happens.
+		Then I see "You are logged in as" and my username

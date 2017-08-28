@@ -26,14 +26,21 @@ Then(/^I see a password box$/) do
   expect(page).to have_selector("input[type=password]") # Write code here that turns the phrase above into concrete actions
 end
 
+
+When(/^I enter a valid user login$/) do
+  fill_in "username", with: $secrets[:browseruseremail]
+end
+
+
 When(/^I enter a valid user password$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in "password", with: $secrets[:browseruserpass]
 end
 
 When(/^I click login$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  find("input[type=password]").click
 end
 
-Then(/^I don't know what happens\.$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I see "You are logged in as" and my username$/) do
+  page.has_content? "You are logged in as"
+  expect(page).to have_text "You are logged in as #{$secrets[:browserusername]}"
 end

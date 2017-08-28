@@ -6,4 +6,7 @@ $secrets = {apikey: ENV['APIKEY'],
             testclientdob: ENV['TESTCLIENTDOB'],
             teststate: ENV['TESTSTATE'],
             docketnums: [ENV['TESTDOCKET1'],
-                         ENV['TESTDOCKET2']]}
+                         ENV['TESTDOCKET2']],
+            browseruseremail: ENV['BROWSERUSEREMAIL'],
+            browseruserpass: ENV['BROWSERUSERPASS'],
+            browserusername: ENV['BROWSERUSERNAME']}
