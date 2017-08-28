@@ -11,6 +11,9 @@ before_install:
   - tar -xzf geckodriver-v0.18.0-linux32.tar.gz -C geckodriver
   - export PATH=$PATH:$PWD/geckodriver
 cache: bundler
+before_deploy:
+  - rm -rf geckodriver
+  - rm geckodriver-v0.18.0-linux32.tar.gz
 deploy:
   provider: pages
   skip_cleanup: true
