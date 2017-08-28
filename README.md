@@ -13,12 +13,12 @@ Hopefully you find these tests useful.
 
 The basic interaction with EG API is a `POST` request to the api's url. The request can have the following parameters:
 
-  personFirst: FirstName,
-  personLast: LastName,
-  personDOB: mm/dd/yyyy,
-  personState: AA,
-  cpcmsSearch: "false"|"true",
-  docketNums: "Comma,separated,list",
-  createPetitions: 0|1,
-  apikey: apikey,
-  useremail: username@org.org}
+    personFirst: FirstName,
+    personLast: LastName,
+    personDOB: mm/dd/yyyy,
+    personState: AA,
+    cpcmsSearch: "false"|"true",
+    docketNums: "Comma,separated,list",
+    createPetitions: 0|1,
+    apikey: apikey,
+    useremail: username@org.org}
