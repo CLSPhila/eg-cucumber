@@ -1,5 +1,6 @@
 # Testing Harness for the Expungement Generator
 
+[![Build Status](https://travis-ci.org/CLSPhila/eg-cucumber.svg?branch=master)](https://travis-ci.org/CLSPhila/eg-cucumber)
 
 The Cucumber acceptance tests in this project run against instances of the [Expungement Generator](https://github.com/mhollander/Expungement-Generator).
 
@@ -20,4 +21,4 @@ The basic interaction with EG API is a `POST` request to the api's url. The requ
   docketNums: "Comma,separated,list",
   createPetitions: 0|1,
   apikey: apikey,
-  useremail: username@org.org} 
+  useremail: username@org.org}
