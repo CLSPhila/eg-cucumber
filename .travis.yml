@@ -17,4 +17,5 @@ deploy:
   github_token: $GITHUB_TOKEN
   on:
     repo: clsphila/eg-cucumber
-    branch: gh-pages
+    branch: master
+    target_branch: gh-pages
