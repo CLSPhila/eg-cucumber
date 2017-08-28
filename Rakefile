@@ -1,5 +1,9 @@
-task default: %w[travis]
+require 'rubygems'
+require 'cucumber'
+require 'cucumber/rake/task'
 
-task :travis do
-  cucumber
+task default: %w[features]
+
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features --format pretty"
 end

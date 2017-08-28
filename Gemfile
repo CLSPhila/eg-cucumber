@@ -5,6 +5,8 @@ group :test do
 	gem 'dotenv'
 	gem 'json'
 	gem 'capybara'
+	gem 'rspec'
 	gem 'pry'
 	gem 'rake'
+	gem 'selenium-webdriver'
 end
