@@ -1,5 +1,7 @@
 # Testing Harness for the Expungement Generator
 
+[Github Pages](https://clsphila.github.io/eg-cucumber)
+
 [![Build Status](https://travis-ci.org/CLSPhila/eg-cucumber.svg?branch=master)](https://travis-ci.org/CLSPhila/eg-cucumber)
 
 The Cucumber acceptance tests in this project run against instances of the [Expungement Generator](https://github.com/mhollander/Expungement-Generator).
@@ -22,3 +24,17 @@ The basic interaction with EG API is a `POST` request to the api's url. The requ
     createPetitions: 0|1,
     apikey: apikey,
     useremail: username@org.org}
+
+The api will return a simple JSON formatted string along the lines of
+
+    {
+      "personFirst": "Joan",
+      "personLast": "ofArc",
+      "dob": "01/06/1431",
+      "results": {
+        "arrestCount": 1,
+        "expungeZip": "https://www.eggenerator.org/JoanofArcExpungments.zip"
+        }
+    }
+
+Right now, access is in a testing phase and is invitation-only. 
