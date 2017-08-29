@@ -37,7 +37,7 @@ When(/^I enter a valid user password$/) do
 end
 
 When(/^I click login$/) do
-  find("input[type=password]").click
+  find("input[type=submit]").click
 end
 
 Then(/^I see "You are logged in as" and my username$/) do
