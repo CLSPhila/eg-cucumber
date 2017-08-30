@@ -13,6 +13,7 @@ Feature: Making a basic request to the Expungement Generator api
         And I have set a street of "123 Apt. 4b Blue St."
         And I have set a city of "Rainbow City"
         And I have set a state of "AA"
+        And I have set a zip of "12345"
         When I submit my request to the expungement Generator
         Then the api returns an object that looks like
           """

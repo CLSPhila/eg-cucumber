@@ -8,7 +8,7 @@ Given(/^a person's first name and last name$/) do
 end
 
 Given(/^the person's date of birth$/) do
-    $params[:personLast] = $secrets[:testclientlast]
+    $params[:personDOB] = $secrets[:testclientdob]
 end
 
 Given(/^my Expungement Generator username$/) do
@@ -24,7 +24,7 @@ Given(/^I have set cpcmsSearch to "([^"]*)"$/) do |arg1|
 end
 
 Given(/^I have a list of docket numbers to search$/) do
-    $params[:docetNums] = $secrets[:docketnums].join(",")
+    $params[:docketNums] = $secrets[:docketnums].join(",")
 end
 
 Given(/^I have set createPetitions to (\d+)$/) do |arg1|
@@ -32,19 +32,23 @@ Given(/^I have set createPetitions to (\d+)$/) do |arg1|
 end
 
 Given(/^I have set a social security number of "([^"]*)"$/) do |arg1|
-    $params[:ssn] = arg1
+    #$params[:personSSN] = arg1
 end
 
 Given(/^I have set a street of "([^"]*)"$/) do |arg1|
-    $params[:street] = arg1
+    $params[:personStreet] = arg1
 end
 
 Given(/^I have set a city of "([^"]*)"$/) do |arg1|
-    $params[:city] = arg1
+    $params[:personCity] = arg1
 end
 
 Given(/^I have set a state of "([^"]*)"$/) do |arg1|
-    $params[:state] = arg1
+    $params[:personState] = arg1
+end
+
+Given(/^I have set a zip of "([^"]*)"$/) do |arg1|
+    $params[:personZip] = arg1
 end
 
 When(/^I submit my request to the expungement Generator$/) do
