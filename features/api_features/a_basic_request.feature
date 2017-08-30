@@ -30,3 +30,4 @@ Feature: Making a basic request to the Expungement Generator api
               }
           }
           """
+     And the response code is 200

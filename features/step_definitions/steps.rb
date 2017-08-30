@@ -8,11 +8,11 @@ Given(/^I have an otherwise valid request$/) do
             docketNums: $secrets[:docketnums].join(",") ,
             createPetitions: 0,
             apikey: $secrets[:apikey],
-            useremail: $secrets[:useremail]} # Write code here that turns the phrase above into concrete actions
+            useremail: $secrets[:useremail]}
 end
 
 Given(/^I do not provide the api key$/) do
-  $params.reject!{ |k| k == :apikey }  # Write code here that turns the phrase above into concrete actions
+  $params.reject!{ |k| k == :apikey }
 end
 
 Given(/^createPetitions=(\d+)$/) do |arg1|
@@ -20,16 +20,16 @@ Given(/^createPetitions=(\d+)$/) do |arg1|
 end
 
 Given(/^I have not included the createPetitions flag in my request$/) do
-  $params.reject!{ |k| k == :createPetitions } # Write code here that turns the phrase above into concrete actions
+  $params.reject!{ |k| k == :createPetitions }
 end
 
 Given(/^I am using an email that has no account in the database$/) do
-  $params[:useremail] =  "notarealemail@fake.fake"# Write code here that turns the phrase above into concrete actions
+  $params[:useremail] =  "notarealemail@fake.fake"
 end
 
 Given(/^I have set CPCMS to false and have not provided any docket numbers$/) do
   $params[:cpcmsSearch] = 'false'
-  $params.reject!{ |k| k==:docketNums } # Write code here that turns the phrase above into concrete actions
+  $params.reject!{ |k| k==:docketNums }
 end
 
 Then(/^the api returns$/) do |response|
@@ -42,13 +42,16 @@ When(/^I submit my request$/) do
   https.use_ssl = true
   req = Net::HTTP::Post.new(uri.path)
   req.set_form_data($params)
-  $resp = https.request(req) # Write code here that turns the phrase above into concrete actions
+  $resp = https.request(req)
 end
 
 
 Then(/^the api returns an object that looks like$/) do |correctResponse|
   expect($params).not_to be_nil
-  expect($resp.code).to match(/200/)
   correctResponse = JSON.parse(correctResponse)
   expect(JSON.parse($resp.body)).to match_structure_of(correctResponse)
+end
+
+Then(/^the response code is (\d+)$/) do |arg1|
+    expect($resp.code).to match(Regexp.quote(arg1))
 end
