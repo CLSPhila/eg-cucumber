@@ -15,54 +15,53 @@ Hopefully you find these tests useful.
 
 # Basic use of the Expungement Generator API
 
-The basic interaction with EG API is a `POST` request to the api's url. There are a few parameters that every request should have.
-
-These parameters should be sent in the body of the `POST` request:
+The basic interaction with EG API is a `POST` request to the api's url. The API can accept parameters either in the url of your request or in the body of the `POST`. There are a few parameters that every request should have.
 
     personFirst: "Joan"
     personLast: "ofArc"
     personDOB: "01/06/1431"
-    personState: "FR"
-    username: "myownegusername"
-
-These parameters should be sent in the request's url:
-
-    apiemail: "legalservices@burgundy.fr"
+    useremail: "myownegusername"
     apikey: "alongstringofnumbersandletters"
 
-** N.B. The api uses `apiemail` and `apikey` to authenticate a user, and these parameters go in the url itself. The api uses the `username` parameter, in the body of the `POST` request, to figure out whose name should be typed into petitions that are generated. The `username` must be someone who has their own individual account in the Expungement Generator. ** [^names]
-
-[^names]: Yes, you could get the api to generate petitions with someone's name other than yours by putting someone else's username here. We're only generating text files here anyway, so that has always been possible.
+**N.B. If you are configuring LegalServer to use the API, then you may need to set the api key as a parameter in the url of your request, not in the body of the `POST`**
 
 Now you have some choices to make.
 
-Do you want the api to search state court records for a person's name and date of birth? In the body of the `POST`, use:
+Do you want the api to search state court records for a person's name and date of birth? Use:
 
     cpcmsSearch: "false"|"true"
 
-If you choose "false", and do not want to do a search of state court records, you need to supply docket numbers for the generator to scrape. In the body of the `POST`, use:
+If you choose "false", and do not want to do a search of state court records, you need to supply docket numbers for the generator to scrape. Use:
 
-    docketNums: "Comma,separated,list"
+    docketNums: "CP-51-CR-01010101-2010,MC-51-CR-11001100-2001"
 
-Finally, do you want the expungement generator to actually create expungements petitions for you as a zip file, or just tell you what arrests a person can have expunged? In the body of the `POST`, use:
+Finally, do you want the expungement generator to actually create expungements petitions for you as a zip file, or just tell you what arrests a person can have expunged? Use:
 
     createPetitions: 0|1
 
-In summary: 
+And if you are generating petitions, you can include information about the person for whom you are generating a petition that will be written into the petitions:
 
-    #URLS params
-    apikey: apikey,
-    useremail: username@org.org
+    ssn: "111223333"
+    street: "123 Apt. 4b Blue St."
+    city: "Rainbow City"
+    state: "AA"
 
 
-    #POST body params
-    personFirst: Joan,
-    personLast: ofArc,
-    personDOB: 01/06/1431,
-    personState: FR
-    cpcmsSearch: "false"|"true",
-    docketNums: "Comma,separated,list",
-    createPetitions: 0|1,
+In summary:
+
+    apikey: "apikey"
+    useremail: "uname@myorg.org"
+    personFirst: "Joan"
+    personLast: "ofArc"
+    personDOB: "01/06/1431"
+    personState: "FR"
+    cpcmsSearch: "false"|"true"
+    docketNums: "Comma,separated,list" # if cpcmsSearch == "false"
+    createPetitions: 0|1
+    ssn: "111223333"   # if createPetitions == 1
+    street: "123 Apt. 4b Blue St."   # if createPetitions == 1
+    city: "Rainbow City"  # if createPetitions == 1
+    state: "AA"  # if createPetitions == 1
 
 The api will return a simple JSON formatted string along the lines of
 
@@ -72,11 +71,13 @@ The api will return a simple JSON formatted string along the lines of
       "dob": "01/06/1431",
       "results": {
         "arrestCount": 1,
-        "expungeZip": "https://www.eggenerator.org/JoanofArcExpungments.zip"
+        "expungeZip": "https://www.eg-generator.org/JoanofArcExpungments.zip"
         }
     }
 
 Right now, access is in a testing phase and is invitation-only.
 
+
+# TODO
 
 TODO cpcmsSearch and createDockets should use the same values for True/False.

@@ -31,10 +31,3 @@ When(/^the user makes a request from the api for a noncpcms search$/i) do
   req.set_form_data($params)
   $resp = https.request(req)
 end
-
-Then(/^the api returns an object that looks like$/) do |correctResponse|
-  expect($params).not_to be_nil
-  expect($resp.code).to match(/200/)
-  correctResponse = JSON.parse(ERB.new(correctResponse).result(binding))
-  expect(JSON.parse($resp.body)).to eq(correctResponse)
-end

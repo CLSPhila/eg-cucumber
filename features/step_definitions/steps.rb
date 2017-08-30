@@ -44,3 +44,11 @@ When(/^I submit my request$/) do
   req.set_form_data($params)
   $resp = https.request(req) # Write code here that turns the phrase above into concrete actions
 end
+
+
+Then(/^the api returns an object that looks like$/) do |correctResponse|
+  expect($params).not_to be_nil
+  expect($resp.code).to match(/200/)
+  correctResponse = JSON.parse(correctResponse)
+  expect(JSON.parse($resp.body)).to match_structure_of(correctResponse)
+end
