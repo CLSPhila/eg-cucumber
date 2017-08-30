@@ -16,6 +16,7 @@ before_deploy:
   - rm geckodriver-v0.18.0-linux32.tar.gz
   - rm -rf vendor
   - rm -rf .bundle
+  - mv gh-pages_config.yml _config.yml
 deploy:
   provider: pages
   skip_cleanup: true
