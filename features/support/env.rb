@@ -14,3 +14,4 @@ require 'erb'
 require 'pry'
 
 Capybara.default_driver = :selenium
+Capybara.default_max_wait_time = 10  # Because the eg is sloooooooow
