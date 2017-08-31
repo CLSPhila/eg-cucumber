@@ -107,3 +107,11 @@ end
 Then(/^I see a button to expunge records$/) do
     expect(page).to have_xpath "//form[@action='expunge.php']/div/input[@value='Expunge']"
 end
+
+Then(/^I see a table listing possible expungements$/) do
+    expect(page).to have_xpath "//table//td"
+end
+
+Then(/^I see a link to download an expungement petition$/) do
+    expect(page).to have_text "Download Petitions and Overview"
+end

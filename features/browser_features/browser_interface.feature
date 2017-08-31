@@ -25,7 +25,7 @@ Feature: Use a browser to find expungeable arrests and generate an expungement p
 		When I click the link "Click here to start preparing expungement petitions"
 		Then I see a form for entering information about a person.
 
-	Scenario: Search for arrests with a CPCM searach
+	Scenario: (SKIP THIS) Search for arrests with a CPCM searach
 		Given I have logged into the Expungement Generator as a user
 		When I click the link "Click here to start preparing expungement petitions"
 		And I fill in a person's name, date of birth, address, and ssn
@@ -36,3 +36,14 @@ Feature: Use a browser to find expungeable arrests and generate an expungement p
 		And I see a link to the Summary Docket and MDJ Summary Docket
 		And I see a button to redo the cpcms search
 		And I see a button to expunge records
+
+	Scenario: Generate Expungements after a CPCMS search
+		Given I have logged into the Expungement Generator as a user
+		When I click the link "Click here to start preparing expungement petitions"
+		And I fill in a person's name, date of birth, address, and ssn
+		And I select the radio button "Search CPCMS for me"
+		And I click the button "Start Expunging"
+		And I click the button "Expunge"
+		Then I see "EXPUNGEMENT INFORMATION"
+		And I see a table listing possible expungements
+		And I see a link to download an expungement petition
