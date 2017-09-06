@@ -6,13 +6,7 @@ RSpec::Matchers.define :match_structure_of do |expected|
     match do |actual|
         expected.all? do |key, val|
             if expected[key].kind_of?(Hash)
-                expected[key].all? do |subkey, subval|
-                    begin
-                        actual[key].has_key? subkey
-                    rescue
-                        false
-                    end
-                end
+                expect(actual[key]).to match_structure_of expected[key]
             else
                 begin
                     actual.has_key? key
