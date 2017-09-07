@@ -27,6 +27,25 @@ Feature: Making a basic request to the Expungement Generator api
                   "DOCKET2"
                   ],
               "arrestCount": 1,
+              "expungements_redactions": [
+                {"case_number": "12345",
+                 "otns":"234",
+                 "action_taken":"Partial Expungement",
+                 "unpaid_costs_fines":"100",
+                 "unpaid_bail":"0.00",
+                 "date_order_received":"",
+                 "PSP":"",
+                 "local_police":""
+                }
+              ],
+              "sealing":[
+                {"case_number":"12345",
+                 "charge_name":"NA",
+                 "code_section":"Section 1234",
+                 "sealable":"NA",
+                 "additional_information": ""
+                }
+              ],
               "expungeZip":"https://www.eg-generator.org/JoanofArcExpungments.zip"
               }
           }
