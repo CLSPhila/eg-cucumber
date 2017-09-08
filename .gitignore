@@ -1,4 +1,4 @@
 .env
 Gemfile.lock
 docs
-features/support/logs
+features/support/logs/*
