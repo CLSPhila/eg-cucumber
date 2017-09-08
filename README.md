@@ -70,8 +70,31 @@ The api will return a simple JSON formatted string along the lines of
       "personLast": "ofArc",
       "dob": "01/06/1431",
       "results": {
+        "dockets": [
+            "DOCKET1",
+            "DOCKET2"
+            ],
         "arrestCount": 1,
-        "expungeZip": "https://www.eg-generator.org/JoanofArcExpungments.zip"
+        "expungements_redactions": [
+          {"case_number": "12345",
+           "otns":"234",
+           "action_taken":"Partial Expungement",
+           "unpaid_costs_fines":"100",
+           "unpaid_bail":"0.00",
+           "date_order_received":"",
+           "PSP":"",
+           "local_police":""
+          }
+        ],
+        "sealing":[
+          {"case_number":"12345",
+           "charge_name":"NA",
+           "code_section":"Section 1234",
+           "sealable":"NA",
+           "additional_information": ""
+          }
+        ],
+        "expungeZip":"https://www.eg-generator.org/JoanofArcExpungments.zip"
         }
     }
 

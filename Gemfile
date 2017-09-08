@@ -9,4 +9,5 @@ group :test do
 	gem 'pry'
 	gem 'rake'
 	gem 'selenium-webdriver'
+	gem 'json-schema'
 end

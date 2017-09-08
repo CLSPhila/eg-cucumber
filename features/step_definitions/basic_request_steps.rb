@@ -5,6 +5,7 @@ end
 
 Given(/^a person's first name and last name$/) do
     $params[:personFirst] = $secrets[:testclientfirst]
+    $params[:personLast] = $secrets[:testclientlast]
 end
 
 Given(/^the person's date of birth$/) do
@@ -20,7 +21,7 @@ Given(/^my organization's Expungement generator api key$/) do
 end
 
 Given(/^I have set cpcmsSearch to "([^"]*)"$/) do |arg1|
-    $params[:cpcmsSearach] = arg1
+    $params[:cpcmsSearch] = arg1
 end
 
 Given(/^I have a list of docket numbers to search$/) do

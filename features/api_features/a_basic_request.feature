@@ -15,39 +15,33 @@ Feature: Making a basic request to the Expungement Generator api
         And I have set a state of "AA"
         And I have set a zip of "12345"
         When I submit my request to the expungement Generator
-        Then the api returns an object that looks like
+        Then the api returns an object that validates against the schema
           """
           {
-            "personFirst": "Joan",
-            "personLast": "ofArc",
-            "dob": "01/06/1431",
-            "results": {
-              "dockets": [
-                  "DOCKET1",
-                  "DOCKET2"
-                  ],
-              "arrestCount": 1,
-              "expungements_redactions": [
-                {"case_number": "12345",
-                 "otns":"234",
-                 "action_taken":"Partial Expungement",
-                 "unpaid_costs_fines":"100",
-                 "unpaid_bail":"0.00",
-                 "date_order_received":"",
-                 "PSP":"",
-                 "local_police":""
+          	"$schema": "http://json-schema.org/draft-04/schema#",
+              "type":"object",
+              "properties": {
+                "personFirst":{"type":"string"},
+                "personLast":{"type":"string"},
+                "dob":{"type":"string"},
+                "results":{
+                    "type":"object",
+                    "properties": {
+                        "dockets":{"type":"array"},
+                        "arrestCount":{"type":"intager"},
+                        "sealing": {"type":"array"},
+                        "expungementZip":{"type":"string"},
+                        "expungements_redactions":{
+                              "oneOf":[
+                                {"type":"string"},
+                                {"type":"array"}
+                              ]
+                        }
+                    },
+                    "required":["dockets","arrestCount","expungements_redactions"]
                 }
-              ],
-              "sealing":[
-                {"case_number":"12345",
-                 "charge_name":"NA",
-                 "code_section":"Section 1234",
-                 "sealable":"NA",
-                 "additional_information": ""
-                }
-              ],
-              "expungeZip":"https://www.eg-generator.org/JoanofArcExpungments.zip"
-              }
+              },
+              "required":["personFirst","personLast","dob","results"]
           }
           """
      And the response code is 200

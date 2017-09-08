@@ -46,10 +46,11 @@ When(/^I submit my request$/) do
 end
 
 
-Then(/^the api returns an object that looks like$/) do |correctResponse|
+Then(/^the api returns an object that validates against the schema$/) do |correctResponse|
   expect($params).not_to be_nil
   correctResponse = JSON.parse(correctResponse)
-  expect(JSON.parse($resp.body)).to match_structure_of(correctResponse)
+  expect(JSON.parse($resp.body)).to match_structure_of(correctResponse),  \
+    log_schema_mismatch(JSON.parse($resp.body))
 end
 
 Then(/^the response code is (\d+)$/) do |arg1|
