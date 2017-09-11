@@ -29,7 +29,7 @@ Now you have some choices to make.
 
 Do you want the api to search state court records for a person's name and date of birth? Use:
 
-    cpcmsSearch: "false"|"true"
+    cpcmsSearch: "false"|"true"|"f"|"t"|0|1
 
 If you choose "false", and do not want to do a search of state court records, you need to supply docket numbers for the generator to scrape. Use:
 
@@ -37,7 +37,7 @@ If you choose "false", and do not want to do a search of state court records, yo
 
 Finally, do you want the expungement generator to actually create expungements petitions for you as a zip file, or just tell you what arrests a person can have expunged? Use:
 
-    createPetitions: 0|1
+    createPetitions: "false"|"true"|"f"|"t"|0|1
 
 And if you are generating petitions, you can include information about the person for whom you are generating a petition that will be written into the petitions:
 
@@ -99,8 +99,3 @@ The api will return a simple JSON formatted string along the lines of
     }
 
 Right now, access is in a testing phase and is invitation-only.
-
-
-# TODO
-
-TODO cpcmsSearch and createDockets should use the same values for True/False.
