@@ -28,6 +28,10 @@ Given(/^I have a list of docket numbers to search$/) do
     $params[:docketNums] = $secrets[:docketnums].join(",")
 end
 
+Given(/^I have set emailPetitions to "([^"]*)"$/) do |arg1|
+    $params[:emailPetitions] = arg1
+end
+
 Given(/^I have set createPetitions to (\d+)$/) do |arg1|
     $params[:createPetitions] = arg1
 end

@@ -9,6 +9,7 @@ Feature: Making a basic request to the Expungement Generator api
         And I have set cpcmsSearch to "false"
         And I have a list of docket numbers to search
         And I have set createPetitions to 1
+        And I have set emailPetitions to "T"
         And I have set a social security number of "111223333"
         And I have set a street of "123 Apt. 4b Blue St."
         And I have set a city of "Rainbow City"
