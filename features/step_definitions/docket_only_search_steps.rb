@@ -18,7 +18,7 @@ end
 
 Given(/^a valid api key$/) do
   $apikey = $secrets[:apikey]
-  $useremail = $secrets[:useremail]
+  $current_user = $secrets[:current_user]
 end
 
 When(/^the user makes a request from the api for a noncpcms search$/i) do

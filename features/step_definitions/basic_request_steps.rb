@@ -13,7 +13,7 @@ Given(/^the person's date of birth$/) do
 end
 
 Given(/^my Expungement Generator username$/) do
-    $params[:useremail] = $secrets[:useremail]
+    $params[:current_user] = $secrets[:current_user]
 end
 
 Given(/^my organization's Expungement generator api key$/) do

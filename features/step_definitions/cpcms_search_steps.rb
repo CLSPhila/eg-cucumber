@@ -7,7 +7,7 @@ When(/^the user makes a request from the api for a CPCMS search$/) do
             personState: $state,
             cpcmsSearch: "true",
             apikey: $apikey,
-            useremail: $useremail}
+            current_user: $current_user}
   https = Net::HTTP.new(uri.host, uri.port)
   https.use_ssl = true
   req = Net::HTTP::Post.new(uri.path)

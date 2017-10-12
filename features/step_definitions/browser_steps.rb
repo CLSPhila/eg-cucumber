@@ -28,7 +28,7 @@ end
 
 
 When(/^I enter a valid user login$/) do
-  fill_in "username", with: $secrets[:browseruseremail]
+  fill_in "username", with: $secrets[:browsercurrent_user]
 end
 
 
@@ -48,7 +48,7 @@ end
 Given(/^I have logged into the Expungement Generator as a user$/) do
   visit $secrets[:egurl]
   click_link("Login by clicking here.")
-  fill_in "username", with: $secrets[:browseruseremail]
+  fill_in "username", with: $secrets[:browsercurrent_user]
   fill_in "password", with: $secrets[:browseruserpass]
   find("input[type=submit]").click
 end

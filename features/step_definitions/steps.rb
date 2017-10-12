@@ -8,7 +8,7 @@ Given(/^I have an otherwise valid request$/) do
             docketNums: $secrets[:docketnums].join(",") ,
             createPetitions: 0,
             apikey: $secrets[:apikey],
-            useremail: $secrets[:useremail]}
+            current_user: $secrets[:current_user]}
 end
 
 Given(/^I do not provide the api key$/) do
@@ -24,7 +24,7 @@ Given(/^I have not included the createPetitions flag in my request$/) do
 end
 
 Given(/^I am using an email that has no account in the database$/) do
-  $params[:useremail] =  "notarealemail@fake.fake"
+  $params[:current_user] =  "notarealemail@fake.fake"
 end
 
 Given(/^I have set CPCMS to false and have not provided any docket numbers$/) do

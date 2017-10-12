@@ -20,7 +20,7 @@ The basic interaction with EG API is a `POST` request to the api's url. The API 
     personFirst: "Joan"
     personLast: "ofArc"
     personDOB: "01/06/1431"
-    useremail: "myownegusername"
+    current_user: "myownusername@somedomain.org"
     apikey: "alongstringofnumbersandletters"
 
 **N.B. If you are configuring LegalServer to use the API, then you may need to set the api key as a parameter in the url of your request, not in the body of the `POST`**
@@ -35,22 +35,27 @@ If you choose "false", and do not want to do a search of state court records, yo
 
     docketNums: "CP-51-CR-01010101-2010,MC-51-CR-11001100-2001"
 
-Finally, do you want the expungement generator to actually create expungements petitions for you as a zip file, or just tell you what arrests a person can have expunged? Use:
+Do you want the expungement generator to actually create expungements petitions for you as a zip file, or just tell you what arrests a person can have expunged? Use:
 
     createPetitions: "false"|"true"|"f"|"t"|0|1
 
+Should your petitions be emailed back to you?
+
+    emailPetitions: false"|"true"|"f"|"t"|0|1
+
 And if you are generating petitions, you can include information about the person for whom you are generating a petition that will be written into the petitions:
 
-    ssn: "111223333"
-    street: "123 Apt. 4b Blue St."
-    city: "Rainbow City"
-    state: "AA"
+    personSSN: "111223333"
+    personStreet: "123 Apt. 4b Blue St."
+    personCity: "Rainbow City"
+    personState: "AA"
+    personZip: "123456"
 
 
 In summary:
 
     apikey: "apikey"
-    useremail: "uname@myorg.org"
+    current_user: "uname@myorg.org"
     personFirst: "Joan"
     personLast: "ofArc"
     personDOB: "01/06/1431"
