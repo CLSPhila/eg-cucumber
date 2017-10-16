@@ -6,6 +6,7 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 before_install:
+  - sudo rm /etc/apt/sources.list.d/mongodb-3.2.list
   - wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux32.tar.gz
   - mkdir geckodriver
   - tar -xzf geckodriver-v0.18.0-linux32.tar.gz -C geckodriver
