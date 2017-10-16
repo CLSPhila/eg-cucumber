@@ -56,5 +56,5 @@ Then(/^the api returns an object that validates against the schema$/) do |correc
 end
 
 Then(/^the response code is (\d+)$/) do |arg1|
-    expect($resp.code).to match(arg1)
+    expect($resp.code).to eq(arg1)
 end
