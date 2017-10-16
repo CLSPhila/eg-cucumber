@@ -4,6 +4,7 @@ Given(/^I have an otherwise valid request$/) do
              personLast: $secrets[:testclientlast],
             personDOB: $secrets[:testclientdob],
             personState: $secrets[:teststate],
+            personStreet: "1234 SomeStreet",
             cpcmsSearch: "false",
             docketNums: $secrets[:docketnums].join(",") ,
             createPetitions: 0,
@@ -47,12 +48,11 @@ end
 
 
 Then(/^the api returns an object that validates against the schema$/) do |correctResponse|
-  $logger.warn($resp.body)
   expect($params).not_to be_nil
   correctResponse = JSON.parse(correctResponse)
-  expect(JSON.parse($resp.body)).to match_structure_of(correctResponse),  \
-    "Uh-ho." + $resp.body
-#    log_schema_mismatch(JSON.parse($resp.body))
+  expect(JSON.parse($resp.body.force_encoding("UTF-8"))).to \
+    match_structure_of(correctResponse),  \
+    log_schema_mismatch(JSON.parse($resp.body.force_encoding("UTF-8")))
 end
 
 Then(/^the response code is (\d+)$/) do |arg1|

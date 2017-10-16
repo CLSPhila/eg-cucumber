@@ -37,7 +37,7 @@ Given(/^I have set createPetitions to (\d+)$/) do |arg1|
 end
 
 Given(/^I have set a social security number of "([^"]*)"$/) do |arg1|
-    #$params[:personSSN] = arg1
+    $params[:personSSN] = arg1
 end
 
 Given(/^I have set a street of "([^"]*)"$/) do |arg1|
