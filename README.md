@@ -47,6 +47,23 @@ Use the `createPetitions` parameter.
 
     emailPetitions: false"|"true"|"f"|"t"|0|1
 
+### Where should the results be emailed?
+
+By default, they will be emailed to the user whose credentials are in the request. But you can use the parameters `emailAddressField` and `emailDomain` to customize where the petitions are sent.
+
+Set `emailDomain` to the name of the domain where you want to email. i.e. `mycasemanagement.com`.
+
+Set `emailAddressField` to the name of another field in the request that holds the value of the email address you want to use.
+
+For example, if you have a caseid in your request called `caseid`, and you can email your case management system at `[caseid]@mycasemanagement.com`, you should use:
+
+    emailPetitions: "true"|"t"|1
+    caseid: [somecaseid]
+    emailAddressField: "caseid"
+    emailDomain: "mycasemanagement.com"
+
+This will send your petitions to `[somecaseid]@mycasemanagement.com`
+
 ### What other information about the subject of the petition should be included in your generated documents?
 
 If you are generating petitions, you can include information about the person for whom you are generating a petition that will be written into the petitions:

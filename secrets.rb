@@ -12,4 +12,6 @@ $secrets = {apikey: ENV['APIKEY'],
                          ENV['TESTDOCKET5']],
             browsercurrent_user: ENV['BROWSERUSEREMAIL'],
             browseruserpass: ENV['BROWSERUSERPASS'],
-            browserusername: ENV['BROWSERUSERNAME']}
+            browserusername: ENV['BROWSERUSERNAME'],
+            id: ENV['ID'],
+            emailDomain: ENV['EMAILDOMAIN']}

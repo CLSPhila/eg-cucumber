@@ -58,3 +58,20 @@ end
 Then(/^the response code is (\d+)$/) do |arg1|
     expect($resp.code).to eq(arg1.to_s)
 end
+
+Given(/^I have set emailAddressField to "([^"]*)"$/) do |arg1|
+    $params[:emailAddressField] = arg1
+end
+
+Given(/^I have set id to a case number$/) do
+    $params[:id] = $secrets[:id]
+end
+
+Given(/^I have set emailDomain to the domain I want to email to$/) do
+    $params[:emailDomain] = $secrets[:emailDomain]
+end
+
+
+Then(/^the generator sends an email to an address made from the value of "([^"]*)" at the value of "([^"]*)"$/) do |arg1, arg2|
+    expect($resp.code).to eq("200")
+end
