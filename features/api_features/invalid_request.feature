@@ -15,7 +15,7 @@ Feature: Return helpful error messages when request data is missing or invalid.
         }
       }
       """
-     And the response code is 403
+     And the response code is 400
 
   Scenario: Missing user email
     Given I have an otherwise valid request
@@ -29,7 +29,7 @@ Feature: Return helpful error messages when request data is missing or invalid.
           }
       }
       """
-     And the response code is 403
+     And the response code is 400
 
   Scenario: Missing createPetitions flag
     Given I have an otherwise valid request
@@ -43,7 +43,7 @@ Feature: Return helpful error messages when request data is missing or invalid.
         }
       }
       """
-    And the response code is 403
+    And the response code is 400
 
 # Invalid parameters
 
@@ -59,7 +59,7 @@ Feature: Return helpful error messages when request data is missing or invalid.
           }
       }
       """
-    And the response code is 403
+    And the response code is 401
 
 
   Scenario: User email not in database
@@ -74,7 +74,7 @@ Feature: Return helpful error messages when request data is missing or invalid.
         }
       }
       """
-     And the response code is 403
+     And the response code is 401
 
   Scenario: CPCMS search set to false but no dockets provided.
     Given I have an otherwise valid request
@@ -88,4 +88,4 @@ Feature: Return helpful error messages when request data is missing or invalid.
         }
       }
       """
-     And the response code is 403
+     And the response code is 400
