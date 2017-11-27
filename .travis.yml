@@ -1,0 +1,28 @@
+language: ruby
+rvm:
+  - 2.4.1
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+before_install:
+  - sudo rm /etc/apt/sources.list.d/mongodb-3.2.list
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.18.0-linux32.tar.gz
+  - mkdir geckodriver
+  - tar -xzf geckodriver-v0.18.0-linux32.tar.gz -C geckodriver
+  - export PATH=$PATH:$PWD/geckodriver
+cache: bundler
+before_deploy:
+  - rm -rf geckodriver
+  - rm geckodriver-v0.18.0-linux32.tar.gz
+  - rm -rf vendor
+  - rm -rf .bundle
+  - rm -rf features/supports/logs
+  - mv gh-pages_config.yml _config.yml
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+    target_branch: gh-pages
