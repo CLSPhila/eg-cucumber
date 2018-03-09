@@ -14,6 +14,6 @@ require 'erb'
 require 'pry'
 
 Capybara.default_driver = :selenium
-Capybara.default_max_wait_time = 10  # Because the eg is sloooooooow
+Capybara.default_max_wait_time = 20  # Because the eg is sloooooooow
 
 $logger = Logger.new("features/support/logs/logfile.log")
