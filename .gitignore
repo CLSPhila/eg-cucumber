@@ -2,3 +2,5 @@
 Gemfile.lock
 docs
 features/support/logs/*
+*.swp
+*.html

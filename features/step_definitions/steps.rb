@@ -50,6 +50,12 @@ end
 Then(/^the api returns an object that validates against the schema$/) do |correctResponse|
   expect($params).not_to be_nil
   correctResponse = JSON.parse(correctResponse)
+  $logger.info("logging the response from an api call.")
+  $logger.info("Request params: ")
+  $logger.info($params)
+  $logger.info("-----------------------")
+  $logger.info($resp.body.force_encoding("UTF-8"))
+  $logger.info("-----------------------")  
   expect(JSON.parse($resp.body.force_encoding("UTF-8"))).to \
     match_structure_of(correctResponse),  \
     log_schema_mismatch(JSON.parse($resp.body.force_encoding("UTF-8")))
