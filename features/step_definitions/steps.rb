@@ -1,5 +1,5 @@
 
-Given(/^I have an otherwise valid request$/) do
+Given(/^I have a(n otherwise)? valid request$/) do |arg1|
   $params = {personFirst: $secrets[:testclientfirst],
              personLast: $secrets[:testclientlast],
             personDOB: $secrets[:testclientdob],
@@ -7,7 +7,7 @@ Given(/^I have an otherwise valid request$/) do
             personStreet: "1234 SomeStreet",
             cpcmsSearch: "false",
             docketNums: $secrets[:docketnums].join(",") ,
-            createPetitions: 0,
+            createPetitions: "0",
             apikey: $secrets[:apikey],
             current_user: $secrets[:current_user]}
 end
@@ -46,6 +46,28 @@ When(/^I submit my request$/) do
   $resp = https.request(req)
 end
 
+When(/^I send the request as json data$/) do
+  uri = URI.parse($secrets[:egurl] + '/eg-api.php')
+  https = Net::HTTP.new(uri.host, uri.port)
+  https.use_ssl = true
+  req = Net::HTTP::Post.new(uri.path)
+  req.body = $params.to_json
+  $resp = https.request(req)
+end
+
+When(/^I send the request with some parameters as json data and others as POST parameters,$/) do
+  # Rats. I'm not sure how to send some data as POST and some as JSON in the request body. 
+  uri = URI.parse($secrets[:egurl] + '/eg-api.php')
+  https = Net::HTTP.new(uri.host, uri.port)
+  https.use_ssl = true
+  current_user = $params.delete(:current_user)
+  req = Net::HTTP::Post.new(uri.path)
+  binding.pry
+  req.body = $params.to_json
+  req.set_form_data({:current_user => current_user})
+  $resp = https.request(req)
+end
+
 
 Then(/^the api returns an object that validates against the schema$/) do |correctResponse|
   expect($params).not_to be_nil
@@ -55,7 +77,7 @@ Then(/^the api returns an object that validates against the schema$/) do |correc
   $logger.info($params)
   $logger.info("-----------------------")
   $logger.info($resp.body.force_encoding("UTF-8"))
-  $logger.info("-----------------------")  
+  $logger.info("-----------------------")
   expect(JSON.parse($resp.body.force_encoding("UTF-8"))).to \
     match_structure_of(correctResponse),  \
     log_schema_mismatch(JSON.parse($resp.body.force_encoding("UTF-8")))
