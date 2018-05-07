@@ -15,7 +15,10 @@ Hopefully you find these tests useful.
 
 # Using the Expungement Generator API to generate petitions
 
-The basic interaction with EG API is a `POST` request to the api's url. The API can accept parameters either in the url of your request or in the body of the `POST`. There are a few parameters that every request should have.
+The basic interaction with EG API is a request to the api's url. The API can accept parameters either in the url of your request, as multipart form parameters in a `POST`, or as json data.
+
+
+There are a few parameters that every request should have.
 
     personFirst: "Joan"
     personLast: "ofArc"
@@ -23,7 +26,6 @@ The basic interaction with EG API is a `POST` request to the api's url. The API 
     current_user: "myownusername@somedomain.org"
     apikey: "alongstringofnumbersandletters"
 
-**N.B. If you are configuring LegalServer to use the API, then you may need to set the api key as a parameter in the url of your request, not in the body of the `POST`**
 
 ## Now you have some choices to make.
 
