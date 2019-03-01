@@ -69,6 +69,7 @@ end
 When(/^I fill in a person's name, date of birth, address, and ssn$/) do
     fill_in "personFirst", with: $secrets[:testclientfirst]
     fill_in "personLast", with: $secrets[:testclientlast]
+    # this doesn't work because datepickers are evil. Must use js instead.
     fill_in "personDOB", with: $secrets[:testclientdob]
     fill_in "personStreet", with: "123 Fake St."
     fill_in "personCity", with: "Imaginaryville"
