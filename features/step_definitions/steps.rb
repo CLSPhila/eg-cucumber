@@ -40,7 +40,7 @@ end
 When(/^I submit my request$/) do
   uri = URI.parse($secrets[:egurl] + '/eg-api.php')
   https = Net::HTTP.new(uri.host, uri.port)
-  https.use_ssl = true
+  https.use_ssl = $secrets[:usessl]
   req = Net::HTTP::Post.new(uri.path)
   req.set_form_data($params)
   $resp = https.request(req)
@@ -56,10 +56,10 @@ When(/^I send the request as json data$/) do
 end
 
 When(/^I send the request with some parameters as json data and others as POST parameters,$/) do
-  # Rats. I'm not sure how to send some data as POST and some as JSON in the request body. 
+  # Rats. I'm not sure how to send some data as POST and some as JSON in the request body.
   uri = URI.parse($secrets[:egurl] + '/eg-api.php')
   https = Net::HTTP.new(uri.host, uri.port)
-  https.use_ssl = true
+  https.use_ssl = $secrets[:usessl]
   current_user = $params.delete(:current_user)
   req = Net::HTTP::Post.new(uri.path)
   binding.pry

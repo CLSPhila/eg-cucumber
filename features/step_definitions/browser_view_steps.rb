@@ -40,8 +40,8 @@ end
 
 
 Then(/^I see a table of docket numbers with links to the dockets$/) do
-    expect(page).to have_text "Docket Sheets downloaded"
-    expect(page).to have_xpath "//form[@action='expunge.php']/table/tbody/tr/td/a"
+    expect(page).to have_text "Docket Sheets downloaded", wait: 120
+    expect(page).to have_xpath "//thead[tr/th[contains(text(), 'Docket Number')]]"
 end
 
 Then(/^I see a disclaimer about the limitations of the Generator$/) do
@@ -68,8 +68,4 @@ end
 
 Then(/^I see a link to download an expungement petition$/) do
     expect(page).to have_text "Download Petitions and Overview"
-end
-
-Then(/^individual dockets have valid links$/) do
-  pending # Write code here that turns the phrase above into concrete actions
 end

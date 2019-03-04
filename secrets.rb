@@ -14,4 +14,6 @@ $secrets = {apikey: ENV['APIKEY'],
             browseruserpass: ENV['BROWSERUSERPASS'],
             browserusername: ENV['BROWSERUSERNAME'],
             id: ENV['ID'],
-            emailDomain: ENV['EMAILDOMAIN']}
+            emailDomain: ENV['EMAILDOMAIN'],
+            usessl: (eval(ENV['USE_SSL']) and TRUE)
+          }

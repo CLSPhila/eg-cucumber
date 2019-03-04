@@ -59,7 +59,7 @@ end
 When(/^I submit my request to the expungement Generator$/) do
     uri = URI.parse($secrets[:egurl] + '/eg-api.php')
     https = Net::HTTP.new(uri.host, uri.port)
-    https.use_ssl = true
+    https.use_ssl = $secrets[:usessl]
     req = Net::HTTP::Post.new(uri.path)
     req.set_form_data($params)
     $resp = https.request(req)

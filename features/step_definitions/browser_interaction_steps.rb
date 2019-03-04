@@ -61,5 +61,5 @@ When(/^I select the radio button "Search CPCMS for me"/) do
 end
 
 When(/^I click the button "([^"]*)"$/) do |arg1|
-    click_button(arg1)
+    click_button arg1, wait: 120
 end
